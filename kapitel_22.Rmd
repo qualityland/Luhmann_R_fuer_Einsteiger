@@ -1,0 +1,50 @@
+---
+title: 'R für Einsteiger: R Markdown-Beispiel'
+output: pdf_document
+---
+
+Dies ist ein Beispiel für eine R Markdown-Datei. Wir laden zunächst die Daten, die wir für dieses Beispiel brauchen. Hier geben wir den vollständigen Dateipfad in den load-Befehl ein. 
+
+```{r}
+# Diesen Pfad anpassen
+load("C:/Meine Daten/erstis.RData")
+```
+
+Außerdem brauchen wir noch einige Pakete, das wir hiermit laden. Dabei erscheinen manchmal Warnmeldungen, die wir mit `warning = FALSE` unterdrücken.
+
+```{r, warning=FALSE}
+library(psych)
+```
+
+Wir sind jetzt bereit, unsere erste Tabelle zu erstellen. Dazu fügen wir zunächst ein paar Variablen zu einem neuen Data Frame zusammen. Wir möchten allerdings nicht, dass dieser Befehl in der Ausgabe-Datei erscheint, daher ergänzen wir hier das Argument `echo=FALSE`.
+
+```{r, echo = FALSE}
+neu <- select(erstis, lz.1, neuro, extra)
+```
+
+Anschließend erstellen wir eine Tabelle mit deskriptiven Statistiken und fordern auch die Korrelationen an. 
+
+```{r}
+describe(neu)
+corr.test(neu)
+```
+
+## Diagramme 
+
+Bei dem folgenden Diagramm handelt es sich um eine Streudiagramm-Matrix, die wir mit der `pairs.panels`-Funktion aus dem `psych`-Paket erstellt haben. Auch das Diagramm wird in unserer Ausgabe-Datei automatisch an dieser Stelle eingefügt. 
+
+```{r, echo=FALSE}
+pairs.panels(neu)
+```
+
+## Exportieren
+
+Um das Dokument in eine pdf-Datei (oder eine HTML- oder Word-Datei) umzuwandeln, führen wir den folgenden Befehl aus. 
+
+`rmarkdown::render("Kapitel 22.rmd", "pdf_document")`
+
+In RStudio können wir auch einfach auf `Knit` klicken und dann das Format der Ausgabe-Datei noch einmal wählen.
+
+## Weitere Informationen
+
+Weitere Informationen zu R Markdown findet man auf der Webseite von R Studio unter http://rmarkdown.rstudio.com/. 
