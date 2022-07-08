@@ -82,3 +82,46 @@ help(describe) # Öffnet die Hilfe zur Funktion "describe"
 #### Abschnitt 4.5: Ein paar Stilregeln ####
 
 # Keine R-Befehle
+
+
+#### Abschnitt 4.6: Übungen ####
+
+# (1) Berechnen Sie die Ergebnisse für die folgenden Aufgaben:
+
+# a. (3+4–5)∙9
+(3 + 4 - 5) * 9
+## [1] 18
+
+# b. 3+5/5
+3 + 5 / 5
+## [1] 4
+
+# c. log(1)
+log(1)
+## [1] 0
+
+# d. e3+4
+exp(3 + 4)
+## [1] 1096.633
+
+# (2) Wie lauten die Ergebnisse für die folgenden logischen Abfragen?
+# a. 5=7
+5 == 7
+## [1] FALSE
+
+# b. 5∙5≠6∙4
+5 * 5 != 6 * 4
+## [1] TRUE
+
+# c. 43,100 ≤ 10^6
+43.100 <= 10^6
+## [1] TRUE
+
+
+# (3) In der mean-Funktion kann man das Argument trim ergänzen.
+#     Finden Sie mit der Hilfe-Datei für die mean-Funktion heraus,
+#     was dieses Argument bewirkt.
+?mean
+x <- c(2, 1, 2, 3, 2, 1, 3, 1, 3, 2, 1, 2, 1, 10, 10)
+mean(x, trim = 0.1)
+# entfernt eine Fraktion extremer Werte.

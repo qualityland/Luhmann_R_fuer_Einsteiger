@@ -15,6 +15,8 @@ vektor # Objekt "vektor" anschauen
 
 mittelwert <- mean(vektor) # Mittelwert berechnen und als Objekt speichern
 
+mittelwert #  Mittelwert anzeigen
+
 gerundeter.mittelwert <- round(mittelwert) # Mittelwert runden und als Objekt speichern
 
 gerundeter.mittelwert # Gerundeten Mittelwert anzeigen
