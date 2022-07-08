@@ -22,6 +22,14 @@ gerundeter.mittelwert <- round(mittelwert) # Mittelwert runden und als Objekt sp
 gerundeter.mittelwert # Gerundeten Mittelwert anzeigen
 
 
+gerundeter.mittelwert <-  # mit dem nativen Pipe Operator (R >= 4.1)
+  c(1,4,7,9) |>
+  mean() |>
+  round()
+
+gerundeter.mittelwert # Gerundeten Mittelwert anzeigen
+
+
 
 #### Abschnitt 5.2: Objekttypen ####
 
@@ -158,3 +166,38 @@ load("beispieldatei.RData") # die Datei "beispieldatei" wird aus unserem aktuell
 
 load("C:/Ordner1/Ordner2/R für Einsteiger/dateiname.RData") # öffnet die Datei unter dem angegebenen Dateipfad
 # Anmerkung: Hier individuell sinnvollen Dateipfad festlegen
+
+
+
+### 5.7	Übungen -----
+
+
+# (1) Geben Sie die Daten in Tabelle 5.2 in drei Vektoren ein.
+# Nennen Sie diese Vektoren methode, woche1 und woche2.
+methode <- c(1, 3, 2, 2, 3,  1,  3,  2,  1, 1)
+woche1 <- c(4, 5, 9, 3, 3, 13, 11, 10, 12, 5)
+woche2 <- c(6, 8, 12, 5, 6, 16, 14, 12, 13, 9)
+
+
+
+# (2) Konvertieren Sie den Vektor methode in einen Faktor.
+methode <- factor(methode)
+
+
+# (3) Fassen Sie die drei Variablen in einem Data Frame zusammen.
+# Geben Sie dem Data Frame den Namen basketball.
+basketball <- data.frame(methode, woche1, woche2)
+basketball
+
+
+# (4) Lassen Sie sich die Werte der zweiten Variablen im Data Frame basketball auf
+# zwei Arten ausgeben: (a) mit der Dollarzeichen-Funktion, (b) mit der Index-
+#   Funktion.
+basketball$woche1
+basketball[, 2]
+
+# (5) Speichern Sie den Data Frame unter dem Namen basketball.RData.
+save(basketball, file = "basketball.RData")
+
+
+# (6) Speichern Sie das Skript.
