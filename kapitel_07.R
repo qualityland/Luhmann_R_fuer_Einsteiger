@@ -13,14 +13,14 @@
 
 # Daten laden ----
 
-load("Minidaten 1.RData")
-load("Minidaten 2.RData")
-load("Minidaten 3.RData")
+load("./data/Minidaten_1.RData")
+load("./data/Minidaten_2.RData")
+load("./data/Minidaten_3.RData")
 
 
 # Pakete installieren und laden ----
 
-install.packages("tidyverse") # muss nur einmalig durchgeführt werden
+#install.packages("tidyverse") # muss nur einmalig durchgeführt werden
 library(tidyverse)
 
 
@@ -133,8 +133,8 @@ View(daten1)
 
 levels(daten1$geschl.f)
 
-daten1$geschl.num <- as.numeric(daten1$geschl.f) # umwandeln des Faktors in eine numerische Variable
-
+# umwandeln des Faktors in eine numerische Variable
+daten1$geschl.num <- as.numeric(daten1$geschl.f) 
 class(daten1$geschl.num)
 
 head(daten1) # zeigt die ersten 6 Zeilen unseres Datensatzes
@@ -214,20 +214,23 @@ daten2 <- daten2 %>% mutate(neuro_2r = 6 - neuro_2)
 
 ### 7.2.6	Variablen umkodieren: R-Basispakete -----  
 
-## Beispiel 1: Fasse die Kategorien 4 und 5 zusammen (aus 5 mach 4, alle anderen Werte bleiben intakt
+## Beispiel 1: Fasse die Kategorien 4 und 5 zusammen (aus 5 mach 4),
+#  alle anderen Werte bleiben intakt
 daten2 <- d2
 
-which(daten2$neuro_1 >= 4) # gibt die Fälle aus, bei denen "neuro_1" größer/gleich 4 ist
+which(daten2$neuro_1 >= 4) # gibt die Fälle aus, bei denen "neuro_1" >= 4 ist
 
-daten2$neuro_1[which(daten2$neuro_1 >= 4)] # gibt die Werte der Fälle aus, bei denen "neuro_1" größer/gleich 4 ist
+# gibt die Werte der Fälle aus, bei denen "neuro_1" >= 4 ist
+daten2$neuro_1[which(daten2$neuro_1 >= 4)]
 
-daten2$neuro_1[which(daten2$neuro_1 >= 4)] <- 4 # setzt 4 als neuen Wert fest für alle Fälle bei denen "neuro_1" größer/gleich 4 ist
+# setzt 4 als neuen Wert fest für alle Fälle bei denen "neuro_1" >= 4 ist
+daten2$neuro_1[which(daten2$neuro_1 >= 4)] <- 4 
 
 ## Beispiel 2: Komplexe Umkodierungen (ohne ifelse-Funktion)
 daten2 <- d2
 
-daten2$neuro_1r[which(daten2$neuro_1 <= 2)] <- 1 # alle Werte kleiner/gleich 2 durch die Zahl 1 ersetzten
-daten2$neuro_1r[which(daten2$neuro_1 >= 3)] <- 2 # alle Werte größer/gleich 3 durch die Zahl 2 ersetzten
+daten2$neuro_1r[which(daten2$neuro_1 <= 2)] <- 1 # Werte <= 2 durch 1 ersetzten
+daten2$neuro_1r[which(daten2$neuro_1 >= 3)] <- 2 # Werte >= 3 durch 2 ersetzten
 
 daten2$neuro_1r # zeigt neue Variable an
 
@@ -389,10 +392,12 @@ nrow(daten1_ohna) # Anzahl der Zeilen im neuen Datensatz
 
 daten1 <- d1
 
-daten1_ohna <- drop_na(daten1) # Alle Zeilen mit fehlenden Werten auf irgendwelchen Variablen werden entfernt
+# Alle Zeilen mit fehlenden Werten auf irgendwelchen Variablen werden entfernt
+daten1_ohna <- drop_na(daten1) 
 
-daten1_ohna.2 <- daten1 %>% drop_na(extra) # Zeilen mit fehlenden Werten auf "extra" werden entfernt
+# Zeilen mit fehlenden Werten auf "extra" werden entfernt
 nrow(daten1_ohna.2)
+daten1_ohna.2 <- daten1 %>% drop_na(extra) 
 
 
 #### Abschnitt 7.4: Data Frames sortieren #### 
