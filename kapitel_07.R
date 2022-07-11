@@ -118,6 +118,13 @@ daten1$geschl.f <- factor(daten1$geschl) # erstellt einen Faktor
 class(daten1$geschl.f) # Prüfen, ob unsere Umwandlung erfolgreich war
 levels(daten1$geschl.f)
 
+# CAVE: wenn wir jetzt den Faktor in eine Zahl umwandeln, werden als Basis
+#       die Labels verwendet und einfach durchnumeriert:
+#       "0" -> 1
+#       "1" -> 2
+daten1$geschl.num <- as.numeric(daten1$geschl.f)
+head(daten1)
+
 ## Vektor wird in Faktor umgewandelt: mit Wertelabels
 
 daten1 <- d1
@@ -127,7 +134,7 @@ daten1$geschl.f <- factor(daten1$geschl,
                           labels = c("m", "w"))
 
 levels(daten1$geschl.f) # Prüfen, ob unsere Umwandlung erfolgreich war
-View(daten1)
+head(daten1)
 
 # Faktor wird in numerischen Vektor umgewandelt
 
